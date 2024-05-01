@@ -1,0 +1,35 @@
+{% extends 'navbar.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>voting</title>
+    <style>
+        .image-container-img {
+             padding-top: 40px;
+             width: 700px;
+             height: 600px;
+             max-width: 100%;
+             padding-bottom: 10px;
+        }
+           h1{
+               color: #006b1b;
+           }
+          .image-container {
+              padding-top: 40px;
+             width: 700px;
+              height: 600px;
+              align-items: center;
+          }
+
+    </style>
+</head>
+<body>
+{% block content %}
+    <div align="center" style="padding-top: 60px" class="image-container">
+    <img   src ="https://img.freepik.com/premium-vector/political-candidate-cartoon-hand-drawn-illustration-with-debates-concept-votes_2175-6061.jpg">
+    </div>
+    <h1 align="center" style="padding-top: 70px">Welcome To Online Voting</h1>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,120 @@
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Results</title>
+    <style>
+        h1{
+            font-size: 40px;
+            align-content: center;
+            }
+         .picture {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #333;
+            margin-right: 20px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            order: initial;
+             align-self: center;
+        }
+    </style>
+</head>
+
+<body>
+{% block content %}
+    <h1 align="center">Voting Results</h1>
+    <div align="center" class="result-container">
+        <div class="party-result">
+              <div class="picture" style="background-image: url('https://th.bing.com/th/id/OIP.lDqpJbCYshL4pnTxmh0fdwHaHa?w=512&h=512&rs=1&pid=ImgDetMain');"></div>
+            <br><div class="party-name"><b>YSRCP</b></div>
+            <ul>
+                <li>YSRCP: <span id="ysrcpVotes"></span></li>
+            </ul>
+        </div>
+        <br>
+         <div class="party-result">
+              <div class="picture" style="background-image: url('https://www.telugubulletin.com/wp-content/uploads/2019/11/160718-tdp.jpg');"></div>
+            <br><div class="party-name"><b>TDP</b></div>
+             <ul>
+             <li style="color: #EF4926">TDP: {{ request.GET.TDP }}</li>
+             </ul>
+        </div>
+        <br>
+         <div class="party-result">
+              <div class="picture" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/11/Janasena_Party_Flag.png');"></div>
+             <br><div class="party-name"><b>JSP</b></div>
+               <ul>
+                   <li style="color: #EF4926">JSP: {{ request.GET.JSP }}</li>
+               </ul>
+         </div>
+        <br>
+        <div class="party-result">
+              <div class="picture" style="background-image: url('https://th.bing.com/th/id/OIP.5kYsct853E5zLuCdDODhCwHaHa?rs=1&pid=ImgDetMain');"></div>
+             <br><div class="party-name"><b>BJP</b></div>
+               <ul>
+                   <li style="color: #EF4926">BJP: {{ request.GET.BJP }}</li>
+               </ul>
+         </div>
+         <div class="party-result">
+              <div class="picture" style="background-image: url('https://th.bing.com/th/id/OIP.XAt4RH64a7BbHA-735Br0AHaHa?w=512&h=512&rs=1&pid=ImgDetMain');"></div>
+             <br><div class="party-name"><b>Congress</b></div>
+             <ul>
+                  <li style="color: #EF4926">Congress: {{ request.GET.Congress }}</li>
+             </ul>
+         </div>
+        <br>
+        <div class="party-result">
+              <div class="picture" style="background-image: url('https://etvbharatimages.akamaized.net/etvbharat/prod-images/ka-blr-01-prajashantipartywillcontestkarnatakaassemblypollstodefeatcommunalbjpgovernmentsaysdrkapaulorprajashantiparty-7205032_20022023165449_2002f_1676892289_96.jpeg');"></div>
+             <br><div class="party-name"><b>PSP</b></div>
+              <ul>
+                  <li style="color: #EF4926">PSP: {{ request.GET.PSP }}</li>
+              </ul>
+         </div>
+    <br>
+    <div class="party-result">
+              <div class="picture" style="background-image: url('https://play-lh.googleusercontent.com/Bbx_Uj4KNi6uAqdHZHW1bKLize0QdPvISyNPZcBLbwKwoGjPZNktkOFR42BtgJ-YV4w');"></div>
+             <br><div class="party-name"><b>Nota</b></div>
+               <ul>
+                    <li style="color: #EF4926">NOTA: {{ request.GET.NOTA }}</li>
+               </ul>
+         </div>
+    </div>
+
+    <script>
+        // Function to retrieve query parameters from URL
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Retrieve vote counts from query parameters
+        const ysrcpVotes = getParameterByName('YSRCP') || 0;
+        const tdpVotes = getParameterByName('TDP') || 0;
+        const jspVotes = getParameterByName('JSP') || 0;
+        const bjpVotes = getParameterByName('BJP') || 0;
+        const congressVotes = getParameterByName('Congress') || 0;
+        const pspVotes = getParameterByName('PSP') || 0;
+        const notaVotes = getParameterByName('NOTA') || 0;
+
+        // Update HTML content with vote counts
+        document.getElementById('ysrcpVotes').innerText = ysrcpVotes;
+        document.getElementById('tdpVotes').innerText = tdpVotes;
+        document.getElementById('jspVotes').innerText = jspVotes;
+        document.getElementById('bjpVotes').innerText = bjpVotes;
+        document.getElementById('congressVotes').innerText = congressVotes;
+        document.getElementById('pspVotes').innerText = pspVotes;
+        document.getElementById('notaVotes').innerText = notaVotes;
+    </script>
+{% endblock %}
+</body>
+</html>

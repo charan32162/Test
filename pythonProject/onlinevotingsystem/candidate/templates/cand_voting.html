@@ -1,0 +1,138 @@
+
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picture Voting Animation</title>
+    <link rel="stylesheet" href="{% static 'css/voting.css' %}">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; /* Using min-height instead of height for scrolling */
+            background-color: #87CEFA;
+            margin: 0; /* Resetting margin */
+            overflow-y: auto; /* Enable vertical scrolling */
+
+        }
+
+        .picture-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .picture-container {
+            display: flex;
+            margin-top: 10px;
+            align-items: center;
+            order: initial;
+        }
+
+        .picture {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #333;
+            margin-right: 20px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            order: initial;
+        }
+
+        .name {
+            margin-right: 20px;
+        }
+
+        .vote-button {
+            padding: 12px 70px;
+            background-color: #007bff;
+            color: #FFFF00;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            order: revert;
+        }
+    </style>
+</head>
+<body>
+{% block content %}
+    <div class="picture-list">
+        <h1>Your Vote Counts..!! Vote For Better Cause...</h1>
+        <div class="picture-container">
+            <div class="picture" style="background-image: url('https://th.bing.com/th/id/OIP.lDqpJbCYshL4pnTxmh0fdwHaHa?w=512&h=512&rs=1&pid=ImgDetMain');"></div>
+            <div class="name">
+                <h2>YSRCP</h2>
+            </div>
+            <button class="vote-button">Vote</button>
+        </div><br>
+        <div class="picture-container">
+            <div class="picture" style="background-image: url('https://www.telugubulletin.com/wp-content/uploads/2019/11/160718-tdp.jpg');"></div>
+            <div class="name">
+                <h2>TDP</h2>
+            </div>
+            <button class="vote-button">Vote</button>
+        </div><br>
+        <div class="picture-container">
+            <div class="picture" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/11/Janasena_Party_Flag.png');"></div>
+            <div class="name">
+                <h2>JSP</h2>
+            </div>
+            <button class="vote-button">Vote</button>
+        </div><br>
+        <div class="picture-container">
+            <div class="picture" style="background-image: url('https://th.bing.com/th/id/OIP.5kYsct853E5zLuCdDODhCwHaHa?rs=1&pid=ImgDetMain');"></div>
+            <div class="name">
+                <h2>BJP</h2>
+            </div>
+            <button class="vote-button">Vote</button>
+        </div><br>
+        <div class="picture-container">
+            <div class="picture" style="background-image: url('https://th.bing.com/th/id/OIP.XAt4RH64a7BbHA-735Br0AHaHa?w=512&h=512&rs=1&pid=ImgDetMain');"></div>
+            <div class="name">
+                <h2>Congress</h2>
+            </div>
+            <button class="vote-button">Vote</button>
+        </div><br>
+        <div class="picture-container">
+            <div class="picture" style="background-image: url('https://etvbharatimages.akamaized.net/etvbharat/prod-images/ka-blr-01-prajashantipartywillcontestkarnatakaassemblypollstodefeatcommunalbjpgovernmentsaysdrkapaulorprajashantiparty-7205032_20022023165449_2002f_1676892289_96.jpeg');"></div>
+            <div class="name">
+                <h2>PSP</h2>
+            </div>
+            <button class="vote-button">Vote</button>
+        </div><br>
+
+        <div class="picture-container">
+            <div class="picture" style="background-image: url('https://play-lh.googleusercontent.com/Bbx_Uj4KNi6uAqdHZHW1bKLize0QdPvISyNPZcBLbwKwoGjPZNktkOFR42BtgJ-YV4w');"></div>
+            <div class="name">
+                <h2>NOTA</h2>
+            </div>
+            <button class="vote-button">Vote</button>
+        </div>
+    </div>
+
+
+   <script>
+    const voteButtons = document.querySelectorAll('.vote-button');
+
+    voteButtons.forEach(button => {
+        button.addEventListener('click', () => {
+        alert('Are you ok for voting to these Party!');
+            if (button.textContent === 'Vote') {
+                button.textContent = 'Voted';
+                button.classList.add('voted-button');
+                button.disabled = true;
+            }
+        });
+
+    });
+</script>
+
+{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picture Voting Animation</title>
+    <style>
+         body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #87CEFA;
+            margin: 0;
+        }
+
+        .picture-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+         .picture {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #333;
+            margin: 50px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            animation: slideIn 1s ease-out;
+             border-radius: 50%;
+        }
+
+        .name {
+            margin: 10px;
+        }
+
+        .vote-button {
+            padding: 12px 70px;
+            background-color: #007bff;
+            color: #FFFF00;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="picture-container">
+        <div class="picture" style="background-image: url('https://www.telugubulletin.com/wp-content/uploads/2019/11/160718-tdp.jpg');"></div>
+        <div class="name">
+            <h2>TDP</h2>
+        </div>
+        <button class="vote-button">Vote</button>
+    </div>
+    <div class="picture-container">
+        <div class="picture" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/11/Janasena_Party_Flag.png');"></div>
+        <div class="name">
+            <h2>JANASENA</h2>
+        </div>
+        <button class="vote-button">Vote</button>
+    </div>
+    <div class="picture-container">
+        <div class="picture" style="background-image: url('https://4.bp.blogspot.com/-URiCjwBMxVc/TtzXRyJi90I/AAAAAAAADj8/MrZd0T5ewIg/s1600/bjp-flag.jpg');"></div>
+        <div class="name">
+            <h2>BJP</h2>
+        </div>
+        <button class="vote-button">Vote</button>
+    </div>
+    <div class="picture-container">
+        <div class="picture" style="background-image: url('https://qph.fs.quoracdn.net/main-qimg-2b60b97c4135f698bd9f5a7dab9d93ec');"></div>
+        <div class="name">
+            <h2>YSRCP</h2>
+        </div>
+        <button class="vote-button">Vote</button>
+    </div>
+    <div class="picture-container">
+        <div class="picture" style="background-image: url('https://www.oneindia.com/img/2016/03/nota-04-1457086162.jpg');"></div>
+        <div class="name">
+            <h2>NOTA</h2>
+        </div>
+        <button class="vote-button">Vote</button>
+    </div>
+
+    <script>
+        const voteButtons = document.querySelectorAll('.vote-button');
+
+        voteButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Check if the user has already voted
+                if (localStorage.getItem('voted')) {
+                    alert('You have already voted. Thank you for your participation!');
+                    return;
+                }
+
+                // Ask for verification before allowing the vote
+                const verification = prompt('Please enter verification code:');
+
+                // Add your verification logic here, for simplicity, let's assume a fixed code
+                if (verification === '2024') {
+                    alert('Verification successful! Your vote has been recorded.');
+                    localStorage.setItem('voted', 'true');
+                    // Update the button appearance and state
+                    button.textContent = 'Voted';
+                    button.classList.add('voted-button');
+                    button.disabled = true;
+                } else {
+                    alert('Verification failed. Please try again.');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
